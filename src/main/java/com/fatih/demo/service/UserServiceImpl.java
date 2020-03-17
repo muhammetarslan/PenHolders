@@ -9,6 +9,7 @@ import com.fatih.demo.repository.RoleRepository;
 import com.fatih.demo.repository.UserRepository;
 
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,4 +31,9 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+	@Override
+	public List<User> findAllUsers() {
+		return userRepository.findAll();
+	}
 }

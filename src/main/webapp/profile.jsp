@@ -12,15 +12,13 @@
 <body>
   <div class="container">
     <c:if test="${pageContext.request.userPrincipal.name != null}">
-        
-        <c:forEach items="${contentTitle}" var="contentTitle">
-        <ul>
+         <ul> 
+        <c:forEach items="${contentTitle}" var="contentTitle">  
         <li class=list-group-item>
         <a href=${contextPath}/${profile}/${contentTitle}>${contentTitle}</a>
-        </li>
-        </ul>
+        </li>  
         </c:forEach>
-        
+        </ul>
         
     </c:if>
   </div>

@@ -13,6 +13,10 @@ public interface ContentRepository extends JpaRepository<Content, Long>{
 	
 	@Transactional
 	@Modifying
-	@Query(value="update content c set c.content = :newContent where c.content_title = :contentTitle", nativeQuery=true)
-	public void edit(@Param("contentTitle") String contentTitle,@Param("newContent") String newContent);
+	@Query(value="update content c set c.content = :newContent where c.content_title = :contentTitle And c.id= :idX", nativeQuery=true)
+	void edit(@Param("contentTitle") String contentTitle,@Param("newContent") String newContent,@Param("idX")String userId);
+	
+//	@Query(value="select * from content c where c.content_title = :contentTitle")
+//	List<Content> findContentByTitle(@Param("contentTitle")String contentTitle);
+	
 }

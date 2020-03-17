@@ -9,12 +9,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import com.fatih.demo.model.Content;
 import com.fatih.demo.model.User;
 import com.fatih.demo.service.ContentService;
@@ -37,8 +36,7 @@ public class ContentController {
 	     }
 	 	
 	 	@PostMapping(value="/texteditor")
-	 	public String saveContent(@ModelAttribute("saveContent") Content saveContent,BindingResult bindingResult) {
-	 		if (bindingResult.hasErrors()) return "texteditor";
+	 	public String saveContent(@ModelAttribute("saveContent") Content saveContent) {
 	 		Authentication user=SecurityContextHolder.getContext().getAuthentication();
 	 		String username=user.getName();
 	 		User currentUser=userService.findByUsername(username);
@@ -68,18 +66,30 @@ public class ContentController {
 	 		}
 	 		return "404";	 		
 	 	}
-	 	@PostMapping(value="/{profile}/{contentTitle}")
-	 	public String putContentPage(@PathVariable("profile")String username,@ModelAttribute("saveContent") Content saveContent,Model model) {
+	 	@PostMapping(value="/{profile}/{contentTitle}",params="submit")
+	 	public String putContentPage(@PathVariable("profile")String username,@ModelAttribute("saveContent") Content saveContent,Model model,@PathVariable("contentTitle") String contentT,@PathVariable("profile")String userx) {
 	 		Authentication user=SecurityContextHolder.getContext().getAuthentication();
+	 		User currentUser=userService.findByUsername(username);
+	 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@" +currentUser.getId());
+	 		String userId=""+currentUser.getId();
 	 		if (username.equals(user.getName())) {
-	 			contentService.edit(saveContent);
+	 			contentService.edit(saveContent,userId);
+	 			
 		 		return "redirect:/welcome";
 	 		} else {
 	 			model.addAttribute("error", "You are not allowed to edit this file.\n You can fork the file and send a pull request the owner of the content.");
 	 			return "editor";
 	 		}
-	 		
-	 		
 	 	}
+	 	
+	 	@PostMapping(value="/{profile}/{contentTitle}",params = "fork")
+	 	public String forkContentToMyProfile(@PathVariable("contentTitle") String contentT,@PathVariable("profile")String userx,@ModelAttribute("saveContent") Content saveContent,ModelMap map) {
+	 		Authentication currentUserAuthentication=SecurityContextHolder.getContext().getAuthentication();
+	 		String currentUserName=currentUserAuthentication.getName();
+	 		User currentUser=userService.findByUsername(currentUserName);
+	 		contentService.save(saveContent,currentUser);
+	 		return "redirect:/welcome"; 		
+	 	}
+	 	
 
 }

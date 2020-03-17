@@ -25,8 +25,17 @@
         <form id="loadProfile"  action="${contextPath}/${pageContext.request.userPrincipal.name}">
             <input type="submit" value="Go to My Profile"/>
         </form>
-        
-        
+        <c:if test="${not empty pullRequests}">
+        <div class="pull-request-list">Pull Requests
+         <ul>
+        <c:forEach items="${pullRequests}" var="pullRequest">
+        <li class=list-group-item>
+        <a href=${contextPath}/pullRequests/${pullRequest}>${pullRequest}</a>
+        </li>
+        </c:forEach>
+        </ul>
+        </div>
+        </c:if>
     </c:if>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

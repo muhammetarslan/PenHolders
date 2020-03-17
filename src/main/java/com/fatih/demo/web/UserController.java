@@ -1,5 +1,8 @@
 package com.fatih.demo.web;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,15 +57,16 @@ public class UserController {
 
         return "login";
     }
-
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
+    
+    @GetMapping(value="/{profile}/{contentTitle}/search")
+    public String search(@RequestParam(value="search",required = false)String search, Model model) {
+    	List<User> userList=userService.findAllUsers();
+    	List<String> usersFound=userList.stream().map(x->x.getUsername())
+    	.filter(x->x.contains(search)).collect(Collectors.toList());  	
+    	model.addAttribute("usersFound", usersFound);
+    	return "searchresults";
     }
     
-//    @GetMapping("/texteditor")
-//    public String textEditor(Model model) {
-//    	return "texteditor";
-//    }
-    
+   
+     
 }

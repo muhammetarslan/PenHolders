@@ -19,19 +19,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Content> contentList;
-
-    public List<Content> getContentList() {
-		return contentList;
-	}
-
-	public void setContentList(List<Content> contentList) {
-		this.contentList = contentList;
-	}
-
-	private String username;
+    
+    private String username;
 
     private String password;
 
@@ -40,6 +29,39 @@ public class User {
 
     @ManyToMany
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Content> contentList;
+    
+    @OneToMany(mappedBy = "toUser", cascade = CascadeType.ALL)
+    private List<PullRequests> pullRequestsReceived;
+    
+    @OneToMany(mappedBy = "fromUser", cascade = CascadeType.ALL)
+    private List<PullRequests> pullRequestsSent;
+
+    public List<PullRequests> getPullRequestsReceived() {
+		return pullRequestsReceived;
+	}
+
+	public void setPullRequestsReceived(List<PullRequests> pullRequestsReceived) {
+		this.pullRequestsReceived = pullRequestsReceived;
+	}
+
+	public List<PullRequests> getPullRequestsSent() {
+		return pullRequestsSent;
+	}
+
+	public void setPullRequestsSent(List<PullRequests> pullRequestsSent) {
+		this.pullRequestsSent = pullRequestsSent;
+	}
+
+	public List<Content> getContentList() {
+		return contentList;
+	}
+
+	public void setContentList(List<Content> contentList) {
+		this.contentList = contentList;
+	}
 
     public Long getId() {
         return id;

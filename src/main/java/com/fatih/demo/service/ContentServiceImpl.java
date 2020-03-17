@@ -34,9 +34,14 @@ public class ContentServiceImpl implements ContentService{
 	}
 
 	@Override
-	public void edit(Content newContent) {
-		contentRepository.edit(newContent.getContentTitle(), newContent.getContent());		
+	public void edit(Content newContent,String userId) {
+		contentRepository.edit( newContent.getContentTitle(),newContent.getContent(),""+userId);		
 	}
+
+//	@Override
+//	public List<Content> findContentByTitle(String contentTitle) {
+//		return contentRepository.findContentByTitle(contentTitle);
+//	}
 
 	
 
