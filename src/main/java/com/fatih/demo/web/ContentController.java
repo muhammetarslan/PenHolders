@@ -70,7 +70,6 @@ public class ContentController {
 	 	public String putContentPage(@PathVariable("profile")String username,@ModelAttribute("saveContent") Content saveContent,Model model,@PathVariable("contentTitle") String contentT,@PathVariable("profile")String userx) {
 	 		Authentication user=SecurityContextHolder.getContext().getAuthentication();
 	 		User currentUser=userService.findByUsername(username);
-	 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@" +currentUser.getId());
 	 		String userId=""+currentUser.getId();
 	 		if (username.equals(user.getName())) {
 	 			contentService.edit(saveContent,userId);

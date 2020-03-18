@@ -14,7 +14,7 @@
 <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 </head>
 <body>
-	<div class="headcontainer">
+    <div class="headcontainer">
 		<form id="loadWelcome" action="${contextPath}/welcome">
 			<input type="submit" value="Go to HomePage" />
 		</form>
@@ -29,31 +29,24 @@
 					</form>
 					<h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
 		</div>
-		<div class="container" id="div-search-results">
-		<div class="searchResults" id="user-search-results">
+    <div  class="container" id="user-search-results">
 		<c:choose>
 		<c:when test="${not empty usersFound}">
-		<h3>Select a user name to send a pull request</h3>
+            <h3>Go to user profile: </h3>
 		 <c:forEach items="${usersFound}" var="userFound">	
 			<tr>
-      		  <td>
-      		  <form:form method="post" >
-      		  <span>Enter description: 
-      		  <input   name="description" type="text"	/>
-      		  <input   name="userX" type="submit" value="${userFound}" class="button"/>
-      		  </span>
-      		  </form:form>
+      		  <td> 
+                    <a href="${contextPath}/${userFound}">${userFound}</a>
       		  </td>
    			 </tr>
-   			 
 				</c:forEach>
 			</c:when>    
 			<c:otherwise>
 				<h2>No user found</h2>
 			</c:otherwise>
-			</c:choose>
+            </c:choose>
 		</div>
-	</div>
+
 	<script type="text/javascript"
 		src="${contextPath}/resources/js/jquery.min.js"></script>
 </body>

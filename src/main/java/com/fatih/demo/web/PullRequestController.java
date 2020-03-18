@@ -42,6 +42,7 @@ public class PullRequestController {
  		User currentUser=userService.findByUsername(currentUserName);
  		List<PullRequests> pullRequestObjects=currentUser.getPullRequestsReceived();
  		List<String> pullRequests=pullRequestObjects.stream().map(x->x.getDescription()).collect(Collectors.toList());
+		System.out.println(currentUserName+" requested, pullrequests "+pullRequests);
     	model.addAttribute("pullRequests",pullRequests);
         return "welcome";
     }
@@ -74,7 +75,7 @@ public class PullRequestController {
     	String url=request.getRequestURI();
     	String arr[]=url.split("/");
     	String fromUserName=arr[1];
-    	String contentTitle=arr[2];
+    	String contentTitle=arr[2].replace("%20"," ");
     	System.out.println("burasi:  "+fromUserName+" ve "+contentTitle);
     	User fromUser=userService.findByUsername(fromUserName);
     	User toUser=userService.findByUsername(toUserName);

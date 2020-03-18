@@ -66,7 +66,13 @@ public class UserController {
     	model.addAttribute("usersFound", usersFound);
     	return "searchresults";
     }
-    
-   
-     
+
+    @GetMapping(value="/search")
+    public String commonSearch(@RequestParam(value="search",required = false)String search, Model model) {
+        List<User> userList=userService.findAllUsers();
+        List<String> usersFound=userList.stream().map(x->x.getUsername())
+                .filter(x->x.contains(search)).collect(Collectors.toList());
+        model.addAttribute("usersFound", usersFound);
+        return "usersearchresults";
+    }
 }

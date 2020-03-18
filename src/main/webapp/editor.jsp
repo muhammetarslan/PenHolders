@@ -14,6 +14,22 @@
 <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 </head>
 <body>
+	<div class="headcontainer">
+		<form id="loadWelcome" action="${contextPath}/welcome">
+			<input type="submit" value="Go to HomePage" />
+		</form>
+			<form action="/search" class="search-by-username">	
+				<label>Search: </label>
+				<input id="search"  name="search" 
+									class="searchUser"  type="search"
+									placeholder="username..."/> 
+					</form>
+					<form id="loadProfile"  action="${contextPath}/${pageContext.request.userPrincipal.name}">
+						<input type="submit" value="Go to My Profile"/>
+					</form>
+					<h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+
+		<div class="container" id="div-save-content">
 	<form:form method="post" modelAttribute="saveContent"
 		class="contentSave">
 		<form:textarea path="content" class="tinymce" value="content"></form:textarea>
@@ -24,15 +40,13 @@
 			name="submit" />
 		<input type="submit" value="fork" class="button" name="fork" />		
 	</form:form>
-	<form id="loadWelcome" action="${contextPath}/welcome">
-		<input type="submit" value="Go to HomePage" />
-	</form>
 	<form action="${contextPath}/${profile}/${contentTitle}/search" class="search-by-username">	
 	<label>Send Pull Request to:</label>
 	<input id="search"  name="search" 
 						class="searchUser"  type="search"
 						placeholder="username..."/> 
 		</form>
+	</div>
 
 
 	<script type="text/javascript"
