@@ -5,13 +5,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="utf-8">
-      <title>Create an account</title>
-
-      <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-      <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <title>Account Creation</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
+        <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+	    <link href="${contextPath}/resources/css/styles.css" rel="stylesheet">
+      </head>
 
   <body>
 
@@ -47,7 +50,8 @@
 
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${contextPath}/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="${contextPath}/node_modules/popper/dist/popper.min.js"></script>
+	<script src="${contextPath}/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
