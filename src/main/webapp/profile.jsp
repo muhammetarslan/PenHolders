@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
     <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="resources/css/bootstrap.css" rel="stylesheet">
-    <link href="resources/css/styles.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/styles.css" rel="stylesheet">
   </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -45,6 +45,9 @@
             </li>
         </ul>
     </div>
+    <form id="logoutForm" method="POST" action="${contextPath}/logout">
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+  </form>
 </nav>
   <div class="container">
    
@@ -59,8 +62,8 @@
         <!-- ${contextPath}/${profile}/${contentTitle} -->
     </c:if>
   </div>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/popper/dist/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="${contextPath}/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="${contextPath}/node_modules/popper/dist/popper.min.js"></script>
+    <script src="${contextPath}/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

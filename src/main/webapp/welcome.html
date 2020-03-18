@@ -13,27 +13,61 @@
 </head>
 
 <body>
-
-    <div class="container">
-      <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
-
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="${contextPath}/welcome">PenHolders</a>
+  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form action="/search" class="form-inline ml-auto mr-auto-10">
+                <div class="md-form my-0">
+                    <input id="search" name="search" class="form-control" type="search" placeholder="Search" />
+                    <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+                </div>
+            </form>
+            <div class="dropdown-divider"></div>
+  
+            <ul class="navbar-nav ml-auto">
+            <li class="nav item">
+                <a class="nav-link" href="${contextPath}/texteditor">Create</a>
+            </li>
+                <li class="nav item">
+                    <a class="nav-link" href="${contextPath}/${pageContext.request.userPrincipal.name}">Profile</a>
+                </li>
+                <li class="nav item">
+                    <a class="nav-link" onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+                </li>
+            </ul>
         </div>
-      </form>
-    </div>
+    </nav>
+  <div class="container">
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+   
+    
+        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
 
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <!-- <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2> -->
+        
+        <c:if test="${not empty pullRequests}">
+        <div class="pull-request-list">Pull Requests
+         <ul>
+        <c:forEach items="${pullRequests}" var="pullRequest">
+        <li class=list-group-item>
+        <a href="${contextPath}/pullRequests/${pullRequest}">${pullRequest}</a>
+        </li>
+        </c:forEach>
+        </ul>
+        </div>
+        </c:if>
+    </c:if>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/popper/dist/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
