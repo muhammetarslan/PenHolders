@@ -13,6 +13,9 @@
   <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="resources/css/bootstrap.css" rel="stylesheet">
   <link href="resources/css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/popper/dist/popper.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -72,8 +75,5 @@
         </c:if>
     </c:if>
   </div>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/popper/dist/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
