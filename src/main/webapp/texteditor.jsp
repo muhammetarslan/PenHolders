@@ -16,49 +16,62 @@
 		<link href="resources/css/styles.css" rel="stylesheet">
 	  </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<a class="navbar-brand" href="${contextPath}/welcome">PenHolders</a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <span class="border pl-3 border-info">
+            <a class="navbar-brand" id="brand" href="${contextPath}/welcome">PenHolders</a>
+            </span>
+        
   
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
   
   
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<form action="/search" class="form-inline ml-auto mr-auto-10">
-				<div class="md-form my-0">
-					<input id="search" name="search" class="form-control" type="search" placeholder="Search" />
-					<i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
-				</div>
-			</form>
-			<div class="dropdown-divider"></div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form action="/search" class="form-inline ml-auto mr-auto-10">
+                <div class="md-form my-0">
+                    <div class="dropdown-divider"></div>
+                    <input id="search" name="search" class="form-control" type="search" placeholder="Search" />
+                    <i class="fa fa-search  ml-3" aria-hidden="true"></i>
+                </div>
+            </form>
+            <div class="dropdown-divider"></div>
   
-			<ul class="navbar-nav ml-auto">
-			<li class="nav item">
-				<a class="nav-link" href="${contextPath}/texteditor">Create</a>
-			</li>
-				<li class="nav item">
-					<a class="nav-link" href="${contextPath}/${pageContext.request.userPrincipal.name}">Profile</a>
-				</li>
-				<li class="nav item">
-					<a class="nav-link" onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
-				</li>
-			</ul>
-		</div>
-		<form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
-	</nav>
-		<div class="container" id="saveContent">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav item">
+                <a class="nav-link" href="${contextPath}/texteditor">Create</a>
+            </li>
+                <li class="nav item">
+                    <a class="nav-link" href="${contextPath}/${pageContext.request.userPrincipal.name}">Profile</a>
+                </li>
+                <li class="nav item">
+                    <a class="nav-link" onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+                </li>
+            </ul>
+        </div>
+    </nav>
+	<div class="container shadow-lg p-3 mb-5 bg-white rounded border" id="div-save-content">
 		
 	<form:form method="post" modelAttribute="saveContent" class="contentSave">
 	 <form:textarea  path="content" class="tinymce"></form:textarea>
-	 <h2 class="input-content-title-heading">Enter Content Title</h2>
-	 <form:input path="contentTitle" type="text" placeholder="Title"/>
-	 <div>
-	<button type="submit">Submit Changes</button>
+	 <nav id="editorNav" class="navbar navbar-expand-lg navbar-dark bg-black pt-2">
+	 <div class="row">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav item">
+		<label class="col-mid-2 col-form-label pl-3 text-secondary"
+			for="titleInput">Title:</label>
+		<div class="cold-mid-6 ml-3">
+	 <form:input path="contentTitle" id="titleInput" class="form-control  bg-dark text-white border-secondary" type="text" placeholder="Title"/>
+	</div>
+</li>
+<li class="nav item">
+	<button type="submit" class="btn btn btn-outline-secondary ml-5">Submit</button>
+	</li>
+	</ul>
+	</div>
 	</div>
 	</form:form>
+		</nav>
 		</div>
 	
 

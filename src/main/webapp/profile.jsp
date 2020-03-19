@@ -16,8 +16,11 @@
     <link href="${contextPath}/resources/css/styles.css" rel="stylesheet">
   </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="${contextPath}/welcome">PenHolders</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <span class="border pl-3 border-info">
+        <a class="navbar-brand" id="brand" href="${contextPath}/welcome">PenHolders</a>
+        </span>
+    
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
@@ -27,8 +30,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form action="/search" class="form-inline ml-auto mr-auto-10">
             <div class="md-form my-0">
+                <div class="dropdown-divider"></div>
                 <input id="search" name="search" class="form-control" type="search" placeholder="Search" />
-                <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+                <i class="fa fa-search  ml-3" aria-hidden="true"></i>
             </div>
         </form>
         <div class="dropdown-divider"></div>
@@ -45,21 +49,15 @@
             </li>
         </ul>
     </div>
-    <form id="logoutForm" method="POST" action="${contextPath}/logout">
-      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-  </form>
 </nav>
   <div class="container">
    
     <c:if test="${pageContext.request.userPrincipal.name != null}">
-         <ul> 
+      <div class="list-group">
         <c:forEach items="${contentTitle}" var="contentTitle" >  
-        <li class=list-group-item>
-        <a href="${contextPath}/${profile}/${contentTitle}" >${contentTitle}</a>
-        </li>  
+        <a class="list-group-item text-center" href="${contextPath}/${profile}/${contentTitle}" >${contentTitle}</a>
         </c:forEach>
-        </ul>
-        <!-- ${contextPath}/${profile}/${contentTitle} -->
+      </div>
     </c:if>
   </div>
   <script src="${contextPath}/node_modules/jquery/dist/jquery.min.js"></script>

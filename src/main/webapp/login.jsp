@@ -21,7 +21,7 @@
 
     <div class="container">
       <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-        <h5 class="card-header info-color text-white bg-primary text-center py-4"><strong>Log in</strong></h5>
+        <h5 class="card-header info-color  bg-primary text-center py-4"><strong>Log in</strong></h5>
         <div class="card-body px-lg-5 pt-0">
       <form method="POST" action="${contextPath}/login" class="text-center" style="color: #e2dede;">
         <div class="form-group ${error != null ? 'has-error' : ''}">
@@ -38,7 +38,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Log in</button>
         </div>
-        <p class="text-center"><a href="${contextPath}/registration">Create an account</a></p>
+        <p class="text-center text-black"><a href="${contextPath}/registration">Create an account</a></p>
       </div>
       </form>
     </div>

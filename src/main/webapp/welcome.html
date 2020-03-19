@@ -13,8 +13,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="${contextPath}/welcome">PenHolders</a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <span class="border pl-3 border-info">
+            <a class="navbar-brand" id="brand" href="${contextPath}/welcome">PenHolders</a>
+            </span>
+        
   
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
@@ -24,8 +27,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form action="/search" class="form-inline ml-auto mr-auto-10">
                 <div class="md-form my-0">
+                    <div class="dropdown-divider"></div>
                     <input id="search" name="search" class="form-control" type="search" placeholder="Search" />
-                    <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+                    <i class="fa fa-search  ml-3" aria-hidden="true"></i>
                 </div>
             </form>
             <div class="dropdown-divider"></div>
@@ -43,31 +47,33 @@
             </ul>
         </div>
     </nav>
-  <div class="container">
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-   
-    
-        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
+	<div class="container" id="div-save-content">
+	
+		<form:form method="post" modelAttribute="saveContent" class="contentSave">
+			<form:textarea path="content" class="tinymce" value="content"></form:textarea>
+			<h4 id="errorTitle">${error}</h4>
+			<nav class="navbar navbar-expand-lg navbar-light bg-white">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-        <!-- <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2> -->
-        
-        <c:if test="${not empty pullRequests}">
-        <div class="pull-request-list">Pull Requests
-         <ul>
-        <c:forEach items="${pullRequests}" var="pullRequest">
-        <li class=list-group-item>
-        <a href="${contextPath}/pullRequests/${pullRequest}">${pullRequest}</a>
-        </li>
-        </c:forEach>
-        </ul>
-        </div>
-        </c:if>
-    </c:if>
-  </div>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/popper/dist/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+				<label class="nav-label" for="titleInput">Title:</label>
+			<form:input path="contentTitle" class="nav-form" id="titleInput" type="text" placeholder="Title" />
+			<input type="submit" value="Submit Changes" class="nav-link" name="submit" />
+			<input type="submit" value="fork" class="nav-link" name="fork" />
+		</form:form>
+		<form action="${contextPath}/${profile}/${contentTitle}/search" class="search-by-username">
+			<label>Send Pull Request to:</label>
+			<input id="search" name="search" class="searchUser" type="search" placeholder="username..." />
+		</form>
+	</nav>
+		</div>
+
+
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/popper/dist/popper.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/plugin/tinymce/js/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript" src="resources/plugin/tinymce/js/tinymce/init-tinymce.js"></script>
 </body>
 </html>

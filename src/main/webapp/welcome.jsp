@@ -15,8 +15,11 @@
   <link href="resources/css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="${contextPath}/welcome">PenHolders</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <span class="border pl-3 border-info">
+            <a class="navbar-brand" id="brand" href="${contextPath}/welcome">PenHolders</a>
+            </span>
+        
   
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
@@ -26,8 +29,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form action="/search" class="form-inline ml-auto mr-auto-10">
                 <div class="md-form my-0">
+                    <div class="dropdown-divider"></div>
                     <input id="search" name="search" class="form-control" type="search" placeholder="Search" />
-                    <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+                    <i class="fa fa-search  ml-3" aria-hidden="true"></i>
                 </div>
             </form>
             <div class="dropdown-divider"></div>
@@ -56,15 +60,15 @@
         <!-- <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2> -->
         
         <c:if test="${not empty pullRequests}">
-        <div class="pull-request-list">Pull Requests
-         <ul>
+            <div class="card">
+            <div class="list-group">
+        <h5 class="card-header info-color  bg-primary text-center py-2">Pull Requests</h5>
         <c:forEach items="${pullRequests}" var="pullRequest">
-        <li class=list-group-item>
-        <a href="${contextPath}/pullRequests/${pullRequest}">${pullRequest}</a>
-        </li>
+        <a class="list-group-item list-group-item-action text-center" href="${contextPath}/pullRequests/${pullRequest}">${pullRequest}</a>
+       
         </c:forEach>
-        </ul>
-        </div>
+         </div>
+         </div>
         </c:if>
     </c:if>
   </div>

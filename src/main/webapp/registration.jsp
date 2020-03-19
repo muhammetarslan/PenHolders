@@ -20,7 +20,7 @@
 
     <div class="container">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-            <h5 class="card-header info-color text-white bg-primary text-center py-4"><strong>Create your account</strong></h5>
+            <h5 class="card-header info-color bg-primary text-center py-4"><strong>Create your account</strong></h5>
             <div class="card-body px-lg-5 pt-0">
 
         <form:form method="POST" modelAttribute="userForm"  class="text-center" style="color: #e2dede;">

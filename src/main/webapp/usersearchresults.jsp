@@ -16,54 +16,56 @@
 		<link href="resources/css/styles.css" rel="stylesheet">
 	  </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<a class="navbar-brand" href="${contextPath}/welcome">PenHolders</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <span class="border pl-3 border-info">
+            <a class="navbar-brand" id="brand" href="${contextPath}/welcome">PenHolders</a>
+            </span>
+        
   
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
   
   
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<form action="/search" class="form-inline ml-auto mr-auto-10">
-				<div class="md-form my-0">
-					<input id="search" name="search" class="form-control" type="search" placeholder="Search" />
-					<i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
-				</div>
-			</form>
-			<div class="dropdown-divider"></div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form action="/search" class="form-inline ml-auto mr-auto-10">
+                <div class="md-form my-0">
+                    <div class="dropdown-divider"></div>
+                    <input id="search" name="search" class="form-control" type="search" placeholder="Search" />
+                    <i class="fa fa-search  ml-3" aria-hidden="true"></i>
+                </div>
+            </form>
+            <div class="dropdown-divider"></div>
   
-			<ul class="navbar-nav ml-auto">
-			<li class="nav item">
-				<a class="nav-link" href="${contextPath}/texteditor">Create</a>
-			</li>
-				<li class="nav item">
-					<a class="nav-link" href="${contextPath}/${pageContext.request.userPrincipal.name}">Profile</a>
-				</li>
-				<li class="nav item">
-					<a class="nav-link" onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
-				</li>
-			</ul>
-		</div>
-		<form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
-	</nav>
+            <ul class="navbar-nav ml-auto">
+            <li class="nav item">
+                <a class="nav-link" href="${contextPath}/texteditor">Create</a>
+            </li>
+                <li class="nav item">
+                    <a class="nav-link" href="${contextPath}/${pageContext.request.userPrincipal.name}">Profile</a>
+                </li>
+                <li class="nav item">
+                    <a class="nav-link" onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div  class="container" id="user-search-results">
 		
 		<c:choose>
 		<c:when test="${not empty usersFound}">
-            <h3>Go to user profile: </h3>
+			<div class="card">
+            <h5 class="card-header info-color text-white bg-primary text-center py-4"></h5>
 		 <c:forEach items="${usersFound}" var="userFound">	
-			<tr>
-      		  <td> 
-                    <a href="${contextPath}/${userFound}">${userFound}</a>
-      		  </td>
-   			 </tr>
+                    <a class="list-group-item list-group-item-action" href="${contextPath}/${userFound}">${userFound}</a>
+					
 				</c:forEach>
+			</div>
 			</c:when>    
 			<c:otherwise>
-				<h2>No user found</h2>
+				<div class="card">
+            <h5 class="card-header info-color text-white bg-primary text-center py-2">No user found</h5>
+				</div>
 			</c:otherwise>
             </c:choose>
 		</div>
