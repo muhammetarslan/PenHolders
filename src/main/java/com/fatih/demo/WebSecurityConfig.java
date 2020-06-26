@@ -48,12 +48,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
-    
-//	@Bean
-//public AuthenticationProvider authProvider() {
-//	DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
-//	provider.setUserDetailsService(userDetailsService);
-//	provider.setPasswordEncoder(new BCryptPasswordEncoder());
-//	return provider;
-//}
-}
