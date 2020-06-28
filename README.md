@@ -13,15 +13,17 @@ PenHolders is a collaborative platform for storytelling. After signing up, you c
 ## Project Structure
 ```
 src
-	-main
-		.java.com.fatih.demo
-				model(POJO models [Content, PullRequests, Role, User] )
-				repository(JpaRepositories)
-				Service(logic implementation)
-				validator(Implementing Validator class for user creation)
-				web(api directing)
-		.resources
-				application and validation properties.
-		.webapp
-				jsp pages with bootstrap 4
-       
+├──main
+    ├── .java.com.fatih.demo
+	 ├──model(POJO models [Content, PullRequests, Role, User] )
+	 ├──repository(JpaRepositories)
+	 ├──Service(logic implementation)
+	 ├──	validator(Implementing Validator class for user creation)
+	 ├──	web(api directing)
+    ├──resources
+	 ├──application and validation properties.
+    ├──webapp
+  	 ├──jsp pages with bootstrap 4
+				
+				
+
