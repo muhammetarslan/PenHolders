@@ -18,8 +18,8 @@ src
 	 ├──model(POJO models [Content, PullRequests, Role, User] )
 	 ├──repository(JpaRepositories)
 	 ├──Service(logic implementation)
-	 ├──	validator(Implementing Validator class for user creation)
-	 ├──	web(api directing)
+	 ├──validator(Implementing Validator class for user creation)
+	 ├──web(api directing)
     ├──resources
 	 ├──application and validation properties.
     ├──webapp
